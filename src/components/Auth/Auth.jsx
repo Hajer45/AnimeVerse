@@ -5,6 +5,8 @@ import gp from "../../assets/gp.png";
 import './Auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faEyeSlash,faEye } from '@fortawesome/free-solid-svg-icons'
+import { motion } from "framer-motion";
+
 
 const Auth = () => {
     
@@ -16,24 +18,28 @@ const Auth = () => {
   const [isLoginVisible, setLoginVisible] = useState(true);
 
   const handleClickRegister = () => {
+    toggleSwitch();
     setRegisterVisible(true);
     setLoginVisible(false);
   };
 
   const handleClickLogin = () => {
+    toggleSwitch();
     setRegisterVisible(false);
     setLoginVisible(true);
   };
+  const [isOn, setIsOn] = useState(false);
 
+  const toggleSwitch = () => setIsOn(!isOn);
   return (
     <div className="container">
       <div className="contact-box">
         <div className="left"></div>
         <div className="right">
           <div className="button-box">
-            <div id="btn"></div>
-            <button type="button" className="toggle-btn" onClick={handleClickLogin}>Log In</button>
-            <button type="button" className="toggle-btn" onClick={handleClickRegister}>Register</button>
+            <div id="btn" data-isOn={isOn}></div>
+            <button type="button" className="toggle-btn"  onClick={handleClickLogin}>Log In</button>
+            <button type="button" className="toggle-btn"  onClick={handleClickRegister}>Register</button>
           </div>
           <div className="social-icons">
             <img alt="fb icon" src={fb} />

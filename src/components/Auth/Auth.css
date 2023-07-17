@@ -54,6 +54,11 @@
     outline: none;
     position: relative;
   }
+  #btn[data-isOn="true"] {
+    left:110px;
+    transition: 1s ease-out;
+    
+  }
   
   #btn {
     top: 0;
